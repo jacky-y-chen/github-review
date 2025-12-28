@@ -118,6 +118,33 @@ githubtool/
 └── README.md
 ```
 
+## 部署到 IPFS
+
+本项目使用 [PinMe](https://pinme.eth.limo/) 自动部署到 IPFS 网络。
+
+### 配置步骤
+
+1. **获取 PinMe AppKey**
+   - 访问 [PinMe 官网](https://pinme.eth.limo/)
+   - 注册/登录账号
+   - 获取你的 AppKey
+
+2. **设置 GitHub Secrets**
+   - 前往仓库 Settings → Secrets and variables → Actions
+   - 添加以下 secrets：
+     - `PINME_APPKEY`（必需）：你的 PinMe AppKey，格式为 `<address>-<jwt>`
+     - `PINME_DOMAIN`（可选）：自定义域名，例如 `github-review`
+
+3. **部署方式**
+   - **自动部署**：推送代码到 `main` 或 `master` 分支自动触发
+   - **手动部署**：前往 Actions → Deploy to PinMe → Run workflow
+
+### 访问部署的站点
+
+部署成功后，可通过以下方式访问：
+- PinMe 域名：`https://{your-domain}.pinit.eth.limo`
+- IPFS Gateway：`https://ipfs.glitterprotocol.dev/ipfs/{CID}`
+
 ## 🛠️ 技术栈
 
 - **前端框架**: React 18 + TypeScript
