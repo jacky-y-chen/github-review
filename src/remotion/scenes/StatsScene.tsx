@@ -74,7 +74,7 @@ const StatCard: React.FC<{
   )
 }
 
-export const StatsScene: React.FC<StatsSceneProps> = ({ data, startFrame, endFrame }) => {
+export const StatsScene: React.FC<StatsSceneProps> = ({ data, startFrame }) => {
   const frame = useCurrentFrame()
   const { fps } = useVideoConfig()
   

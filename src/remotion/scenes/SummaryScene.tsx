@@ -7,7 +7,7 @@ interface SummarySceneProps {
   endFrame: number
 }
 
-export const SummaryScene: React.FC<SummarySceneProps> = ({ data, startFrame, endFrame }) => {
+export const SummaryScene: React.FC<SummarySceneProps> = ({ data, startFrame }) => {
   const frame = useCurrentFrame()
   const { fps } = useVideoConfig()
   

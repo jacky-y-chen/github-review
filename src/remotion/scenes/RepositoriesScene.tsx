@@ -7,7 +7,7 @@ interface RepositoriesSceneProps {
   endFrame: number
 }
 
-export const RepositoriesScene: React.FC<RepositoriesSceneProps> = ({ data, startFrame, endFrame }) => {
+export const RepositoriesScene: React.FC<RepositoriesSceneProps> = ({ data, startFrame }) => {
   const frame = useCurrentFrame()
   const { fps } = useVideoConfig()
   

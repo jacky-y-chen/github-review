@@ -9,17 +9,12 @@ interface VideoPreviewProps {
 }
 
 const VideoPreview = ({ onBack }: VideoPreviewProps) => {
-  const { githubData, clearToken } = useStore()
+  const { githubData } = useStore()
   const [isRendering, setIsRendering] = useState(false)
   const [renderProgress, setRenderProgress] = useState(0)
   const [quality, setQuality] = useState<'preview' | 'export'>('preview')
 
   if (!githubData) return null
-
-  const handleClearAndBack = () => {
-    clearToken()
-    onBack()
-  }
 
   const handleBack = () => {
     onBack()

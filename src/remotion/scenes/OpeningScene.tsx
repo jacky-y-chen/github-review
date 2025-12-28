@@ -7,12 +7,11 @@ interface OpeningSceneProps {
   endFrame: number
 }
 
-export const OpeningScene: React.FC<OpeningSceneProps> = ({ data, startFrame, endFrame }) => {
+export const OpeningScene: React.FC<OpeningSceneProps> = ({ data, startFrame }) => {
   const frame = useCurrentFrame()
   const { fps } = useVideoConfig()
   
   const localFrame = frame - startFrame
-  const duration = endFrame - startFrame  // 场景总时长
   
   // 减慢动画速度，让进场更优雅
   const titleOpacity = interpolate(localFrame, [0, 30], [0, 1], { extrapolateRight: 'clamp' })

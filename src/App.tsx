@@ -2,10 +2,8 @@ import { useState } from 'react'
 import InputForm from './components/InputForm'
 import StatsDisplay from './components/StatsDisplay'
 import VideoPreview from './components/VideoPreview'
-import { useStore } from './store/useStore'
 
 function App() {
-  const { githubData } = useStore()
   const [showStats, setShowStats] = useState(false)
   const [showVideo, setShowVideo] = useState(false)
 

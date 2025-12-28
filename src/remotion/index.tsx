@@ -7,7 +7,7 @@ export const RemotionRoot: React.FC = () => {
     <>
       <Composition
         id="GitHubYearVideo"
-        component={GitHubYearVideo}
+        component={GitHubYearVideo as any}
         durationInFrames={2700}
         fps={60}
         width={1920}

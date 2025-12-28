@@ -7,7 +7,7 @@ interface EndingSceneProps {
   endFrame: number
 }
 
-export const EndingScene: React.FC<EndingSceneProps> = ({ data, startFrame, endFrame }) => {
+export const EndingScene: React.FC<EndingSceneProps> = ({ data, startFrame }) => {
   const frame = useCurrentFrame()
   const { fps } = useVideoConfig()
   

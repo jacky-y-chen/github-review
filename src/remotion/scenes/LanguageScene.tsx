@@ -7,7 +7,7 @@ interface LanguageSceneProps {
   endFrame: number
 }
 
-export const LanguageScene: React.FC<LanguageSceneProps> = ({ data, startFrame, endFrame }) => {
+export const LanguageScene: React.FC<LanguageSceneProps> = ({ data, startFrame }) => {
   const frame = useCurrentFrame()
   const { fps } = useVideoConfig()
   

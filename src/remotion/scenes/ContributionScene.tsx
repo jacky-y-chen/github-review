@@ -1,4 +1,4 @@
-import { AbsoluteFill, useCurrentFrame, interpolate, useVideoConfig } from 'remotion'
+import { AbsoluteFill, useCurrentFrame, interpolate } from 'remotion'
 import type { GitHubData } from '../../store/useStore'
 
 interface ContributionSceneProps {
@@ -7,9 +7,8 @@ interface ContributionSceneProps {
   endFrame: number
 }
 
-export const ContributionScene: React.FC<ContributionSceneProps> = ({ data, startFrame, endFrame }) => {
+export const ContributionScene: React.FC<ContributionSceneProps> = ({ data, startFrame }) => {
   const frame = useCurrentFrame()
-  const { fps } = useVideoConfig()
   
   const localFrame = frame - startFrame
   
