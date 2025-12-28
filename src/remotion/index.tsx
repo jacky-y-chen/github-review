@@ -1,4 +1,5 @@
-import { Composition } from 'remotion'
+import React from 'react'
+import { Composition, registerRoot } from 'remotion'
 import { GitHubYearVideo } from './GitHubYearVideo'
 
 export const RemotionRoot: React.FC = () => {
@@ -28,3 +29,5 @@ export const RemotionRoot: React.FC = () => {
     </>
   )
 }
+
+registerRoot(RemotionRoot)
