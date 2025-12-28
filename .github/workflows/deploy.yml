@@ -1,0 +1,60 @@
+name: Deploy to PinMe
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+    inputs:
+      domain:
+        description: 'PinMe domain name (optional)'
+        required: false
+      build_dir:
+        description: 'Build directory'
+        default: 'dist'
+        required: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build project
+        run: npm run build
+      
+      - name: Install PinMe CLI
+        run: npm install -g pinme
+      
+      - name: Set PinMe AppKey
+        run: pinme set-appkey "${{ secrets.PINME_APPKEY }}"
+      
+      - name: Deploy to IPFS
+        id: deploy
+        run: |
+          DOMAIN="${{ github.event.inputs.domain || secrets.PINME_DOMAIN || 'github-review' }}"
+          BUILD_DIR="${{ github.event.inputs.build_dir || 'dist' }}"
+          
+          echo "Deploying from: $BUILD_DIR"
+          echo "Domain: $DOMAIN"
+          echo "DEPLOY_DOMAIN=$DOMAIN" >> $GITHUB_ENV
+          
+          pinme upload "$BUILD_DIR" --domain "$DOMAIN"
+      
+      - name: Deployment Summary
+        run: |
+          echo "✅ Deployment successful!"
+          echo "🌐 Your site is now live on PinMe/IPFS"
+          echo "🔗 Access via: https://${{ env.DEPLOY_DOMAIN }}.pinit.eth.limo"
