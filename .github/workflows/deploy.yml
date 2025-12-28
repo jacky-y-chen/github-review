@@ -47,6 +47,7 @@ jobs:
           
           echo "Deploying from: $BUILD_DIR"
           echo "Domain: $DOMAIN"
+          echo "DEPLOY_DOMAIN=$DOMAIN" >> $GITHUB_ENV
           
           pinme upload "$BUILD_DIR" --domain "$DOMAIN"
       
@@ -54,4 +55,4 @@ jobs:
         run: |
           echo "✅ Deployment successful!"
           echo "🌐 Your site is now live on PinMe/IPFS"
-          echo "🔗 Access via: https://${{ github.event.inputs.domain || secrets.PINME_DOMAIN || 'github-review' }}.pinit.eth.limo"
+          echo "🔗 Access via: https://${{ env.DEPLOY_DOMAIN }}.pinit.eth.limo"
